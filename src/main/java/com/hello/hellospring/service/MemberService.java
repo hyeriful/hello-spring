@@ -3,16 +3,18 @@ package com.hello.hellospring.service;
 import com.hello.hellospring.domain.Member;
 import com.hello.hellospring.repository.MemberRepository;
 import com.hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+//@Service    //이걸 해줌으로써 MemberService를 spring container에 등록
 public class MemberService {
 
     private final MemberRepository memberRepository; //final: const
 
-    //Dependency Injection(DI)
-    //MemberService 입장에서는 MemberRepository를 외부에서 넣어줌
+//    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
