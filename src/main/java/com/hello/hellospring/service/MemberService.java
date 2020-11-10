@@ -6,9 +6,11 @@ import com.hello.hellospring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional  //JPA를 통한 모든 데이터 변경은 트랜잭션 안에서 실행해야 한다.
 //@Service    //이걸 해줌으로써 MemberService를 spring container에 등록
 public class MemberService {
 
