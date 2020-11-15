@@ -1,7 +1,9 @@
 package com.hello.hellospring;
 
+import com.hello.hellospring.aop.TimeTraceAop;
 import com.hello.hellospring.repository.MemberRepository;
 import com.hello.hellospring.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -35,6 +37,7 @@ public class SpringConfig {
 
     private final MemberRepository memberRepository;
 
+    @Autowired
     public SpringConfig(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
@@ -44,5 +47,8 @@ public class SpringConfig {
         return new MemberService(memberRepository);
     }
 
-
+    @Bean   //repo, serv 처럼 정형화 된 것이 아니기 때문에, 인지할 수 있게 따로 이렇게 스프링빈에 등록해주는 방식 선호
+    public TimeTraceAop timeTraceAop() {
+        return new TimeTraceAop();
+    }
 }
